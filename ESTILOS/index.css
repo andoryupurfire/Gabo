@@ -23,7 +23,7 @@
     
     /* Imagen con efecto de deslizamiento */
     background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent), 
-                url('iMAGENES/gabito.jpg');
+                url('../IMAGENES/gabito.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Parallax */
@@ -119,7 +119,7 @@ nav ul li a:hover {
     border-radius: 8px;
     
     /* 1. RUTA CORRECTA (Verifica mayúsculas/minúsculas de tu carpeta) */
-    background-image: url('iMAGENES/aside2.jpg'); 
+    background-image: url('../iMAGENES/aside2.jpg'); 
     
     /* 2. CLAVE PARA QUE SE VEA COMPLETA */
     background-size: contain; 
