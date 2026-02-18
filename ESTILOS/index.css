@@ -1,0 +1,280 @@
+/* =========================================
+   1. RESET Y CONFIGURACIÓN BÁSICA
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+/* =========================================
+   2. EL LIENZO (GRID HÍBRIDO)
+   ========================================= */
+.grid-container {
+    display: grid;
+    
+    /* ELIMINADO: gap: 10px; */
+    /* ELIMINADO: padding: 10px; */
+
+    padding: 0; /* Sin marco alrededor */
+    gap: 0;     /* Sin líneas entre las secciones */
+    
+    min-height: 100vh; 
+    height: auto; 
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(15, 5vh) auto;
+    
+    /* Opcional: Asegura que el fondo sea blanco puro si se ve algún hueco */
+    background-color: white; 
+}
+/* =========================================
+   3. HEADER (ZONA SUPERIOR)
+   ========================================= */
+.header {
+    grid-column: 1 / 13;
+    grid-row: 1 / 12; /* Ocupa las primeras 12 filas fijas */
+    
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent), 
+                url('../IMAGENES/gabito.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto Parallax */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 30px;
+    color: white;
+}
+
+.header h1 {
+    font-family: 'Georgia', serif;
+    font-size: 3rem;
+    letter-spacing: 4px;
+    margin-top: 20px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    text-align: center;
+}
+
+/* =========================================
+   4. NAVBAR (NAVEGACIÓN)
+   ========================================= */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    padding: 10px 40px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Georgia', serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #bb4d00;
+}
+
+/* =========================================
+   5. TÍTULO PRINCIPAL
+   ========================================= */
+.titulo-principal {
+    grid-column: 1 / 13;
+    grid-row: 12 / 16; /* Se ubica debajo del header */
+    
+    font-family: 'Georgia', serif;
+    
+    /* CORRECCIÓN: Se usa punto, no coma */
+    font-size: 1.5rem; 
+    font-weight: bold;
+    line-height: 1.2;
+    
+    text-align: center;
+    color: #bb4d00;
+    
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    align-self: center; /* Centrado vertical en su celda */
+}
+
+/* =========================================
+   6. CONTENIDO PRINCIPAL (TEXTO)
+   ========================================= */
+
+
+
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+footer {
+    grid-column: 1 / 13;
+    
+    /* CAMBIO CLAVE 3: Automático */
+    /* Se pone solo al final de todo el contenido */
+    grid-row: auto; 
+    margin-top: 20px;
+    
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Georgia', serif;
+    font-size: 0.9rem;
+    padding: 20px; /* Añadido padding para que no se vea aplastado */
+}
+
+/* =========================================
+   CONTENEDOR PADRE: DE BORDE A BORDE (casi)
+   ========================================= */
+.padre {
+    /* 1. OBLIGAR a ocupar desde la columna 1 hasta el final */
+    grid-column: 1 / -1 !important; 
+    
+    /* 2. OBLIGAR a tener solo 3px de margen a los lados */
+    /* Sintaxis: Arriba | Derecha | Abajo | Izquierda */
+    margin: 0 3px 50px 3px !important;
+    
+    /* 3. RESETEAR cualquier ancho fijo que pudiera estar estorbando */
+    width: auto !important; 
+    max-width: none !important;
+
+    /* --- ESTILOS VISUALES (Iguales que antes) --- */
+    display: flex;
+    flex-direction: row; 
+    
+    background-color: #fdfdfd;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    overflow: hidden; 
+    
+    /* Altura imponente */
+    min-height: 80vh; 
+}
+
+/* 2. EL TEXTO (IZQUIERDA) */
+.main-content {
+    flex: 2; /* Ocupa el 66% del ancho (más espacio para texto) */
+    padding: 40px; /* Relleno interno para que el texto respire */
+    
+    /* IMPORTANTE: Sin fondo ni sombra propia */
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.main-content p {
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #bb4d00;
+    margin-bottom: 20px;
+}
+
+/* 3. LA BARRA LATERAL / IMAGEN (DERECHA) */
+.sidebar {
+    flex: 1; /* Ocupa el 33% restante */
+    
+    /* Configuración de la imagen */
+    background-image: url('../IMAGENES/aside2.jpg'); 
+    background-size: cover; /* "Cover" estira la foto para llenar todo el hueco */
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Eliminamos padding para que la imagen toque los bordes */
+    padding: 0; 
+    background-color: transparent; 
+    
+    /* Altura mínima para asegurar que se vea la foto si hay poco texto */
+    min-height: 100%; 
+}
+
+/* 1. EL CONTENEDOR PADRE (MÁS GRANDE) */
+/* 1. EL CONTENEDOR GIGANTE */
+.padre {
+    grid-column: 2 / 12;
+    grid-row: 16 / span 1;
+    
+    display: flex;
+    flex-direction: row; 
+    
+    background-color: #fdfdfd;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    overflow: hidden; 
+    margin-bottom: 50px;
+    
+    /* CAMBIO 1: Altura MÍNIMA de 80% de la pantalla para que sea imponente */
+    min-height: 80vh; 
+}
+
+/* 2. EL TEXTO (IZQUIERDA) */
+.main-content {
+    flex: 1; 
+    padding: 60px; /* Bastante espacio para que se vea elegante */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el texto verticalmente */
+}
+
+.main-content p {
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem; 
+    line-height: 1.8;
+    color: #bb4d00;
+    margin-bottom: 25px;
+}
+
+/* 3. LA IMAGEN (DERECHA - COMPLETA Y ESTÁTICA) */
+.sidebar {
+    flex: 1; 
+    
+    background-image: url('../IMAGENES/aside2.jpg'); 
+    
+    /* CAMBIO 2: 'contain' asegura que la imagen salga ENTERA (mariposas y libro) */
+    background-size: contain; 
+    
+    /* CAMBIO 3: La ponemos en el centro para que no quede volando */
+    background-position: center; 
+    
+    background-repeat: no-repeat;
+    
+    /* CAMBIO 4: Efecto Estático (Parallax) */
+    /* La imagen se quedará "pegada" al fondo mientras haces scroll */
+    background-attachment: fixed;
+    
+    /* Ajuste para que en pantallas anchas se vaya un poco a la derecha */
+    background-position: 75% center; 
+}
+
+/* RESPONSIVE (MÓVIL) */
+@media (max-width: 900px) {
+    .padre {
+        grid-column: 1 / 13;
+        flex-direction: column;
+        min-height: auto; /* En celular que tenga la altura normal */
+    }
+    
+    .sidebar {
+        height: 400px; /* Altura fija para ver la imagen bien en celular */
+        width: 100%;
+        
+        /* En celular quitamos el efecto fixed para evitar errores de zoom */
+        background-attachment: scroll; 
+        background-position: center;
+    }
+}
+
